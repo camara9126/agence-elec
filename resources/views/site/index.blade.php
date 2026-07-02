@@ -123,7 +123,7 @@
     /* Hero section équilibrée */
     .hero-accueil {
       background: 
-       url('serhead/head1.png') no-repeat;
+       url('SerHead/head1.png') no-repeat;
       background-size: cover;
       background-position: center;
       padding: 80px 0 90px;
@@ -521,7 +521,7 @@
       <a class="navbar-brand" href="/">
         <div class="logo-regilec">
           <!-- Logo image réelle -->
-          <img src="images/Regilec.png" alt="regilec Logo" class="logo-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=formafit=crop&w=200&h=200&fit=crop';">
+          <img src="images/Regilec.png" alt="regilec Logo" class="logo-image">
           <div class="logo-text">
             REGILEC
             <span class="le-grand-jour">Votre Partenaire de Qualité</span>
