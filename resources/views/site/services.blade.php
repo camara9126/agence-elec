@@ -126,7 +126,7 @@
     
     /* Hero Services amélioré - VERSION COMPACTE */
     .hero-services {
-      background:  url('serhead/head2.png') no-repeat;
+      background:  url('SerHead/head2.png') no-repeat;
       background-size: cover;
       background-position: center;
       color: white;
@@ -440,7 +440,7 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('apropos') }}">À propos</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
           <li class="nav-item ms-2">
-            <a href="/" class="btn btn-or btn-sm">Devis</a>
+            <a href="{{ route('login') }}" class="btn btn-or btn-sm">Connexion</a>
           </li>
         </ul>
       </div>

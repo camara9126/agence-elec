@@ -396,7 +396,7 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('apropos') }}">À propos</a></li>
           <li class="nav-item"><a class="nav-link active" href="{{ route('contact') }}">Contact</a></li>
           <li class="nav-item ms-2">
-            <a href="/" class="btn btn-or btn-sm">Devis</a>
+            <a href="{{ route('login') }}" class="btn btn-or btn-sm">Connexion</a>
           </li>
         </ul>
       </div>
@@ -407,7 +407,7 @@
   <div class="hero-contact">
     <div class="container">
       <span class="hero-badge"><i class="fas fa-crown me-2"></i>PRÊT À OPTIMISER ?</span>
-      <h1 class="fw-bold">Contactez-nous</h1>
+      <h1 class="fw-bold text-white">Contactez-nous</h1>
       <p>Prêt à sécuriser votre réseau et éliminer vos pénalités ? Notre équipe est à votre écoute pour conseiller et faire de votre performance industrielle une réalité.</p>
       <div class="d-flex gap-3 mt-3">
         <a href="#form" class="btn btn-or">Envoyer un message</a>
@@ -485,26 +485,15 @@
                   <input type="tel" class="form-control" id="telephone" placeholder="+221 77 XXX XX XX" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label class="form-label">Type d'événement</label>
-                  <select class="form-select" id="evenement">
+                  <label class="form-label">Objet</label>
+                  <select class="form-select" id="objet">
                     <option selected>Choisissez</option>
-                    <option>Mariage</option>
-                    <option>Baptême</option>
-                    <option>Anniversaire</option>
-                    <option>Événement professionnel</option>
-                    <option>Réception privée</option>
+                    <option>Demande Devis</option>
+                    <option>Support Technique</option>
+                    <option>Partenariat</option>
+                    <option>Demande de Tarifs</option>
                     <option>Autre</option>
                   </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label class="form-label">Date prévue</label>
-                  <input type="date" class="form-control" id="date">
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label class="form-label">Nombre d'invités</label>
-                  <input type="number" class="form-control" id="invites" placeholder="Ex: 100">
                 </div>
               </div>
               <div class="mb-3">
@@ -637,9 +626,7 @@
       const nom = document.getElementById('nom').value;
       const email = document.getElementById('email').value;
       const telephone = document.getElementById('telephone').value;
-      const evenement = document.getElementById('evenement').value;
-      const date = document.getElementById('date').value;
-      const invites = document.getElementById('invites').value;
+      const objet = document.getElementById('objet').value;
       const message = document.getElementById('message').value;
       
       // Numéro WhatsApp (à remplacer par votre numéro)
@@ -650,15 +637,7 @@
       whatsappMessage += `*Nom :* ${nom}%0A`;
       whatsappMessage += `*Email :* ${email}%0A`;
       whatsappMessage += `*Téléphone :* ${telephone}%0A`;
-      whatsappMessage += `*Événement :* ${evenement}%0A`;
-      
-      if (date) {
-        whatsappMessage += `*Date prévue :* ${date}%0A`;
-      }
-      
-      if (invites) {
-        whatsappMessage += `*Nombre d'invités :* ${invites}%0A`;
-      }
+      whatsappMessage += `*Objet :* ${objet}%0A`;
       
       whatsappMessage += `*Message :* ${message}%0A%0A`;
       whatsappMessage += `_Message envoyé depuis le site web regilec_`;
