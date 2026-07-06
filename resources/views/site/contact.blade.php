@@ -411,7 +411,7 @@
       <p>Prêt à sécuriser votre réseau et éliminer vos pénalités ? Notre équipe est à votre écoute pour conseiller et faire de votre performance industrielle une réalité.</p>
       <div class="d-flex gap-3 mt-3">
         <a href="#form" class="btn btn-or">Envoyer un message</a>
-        <a href="tel:+221775449795" class="btn btn-rouge">Appeler</a>
+        <a href="tel:+221775654122" class="btn btn-rouge">Appeler</a>
       </div>
     </div>
   </div>
@@ -584,7 +584,7 @@
   </section>
 
   <!-- WhatsApp flottant--> 
-  <a href="https://wa.me/221775449795" class="whatsapp-float" target="_blank">
+  <a href="https://wa.me/221775654122" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a> 
 

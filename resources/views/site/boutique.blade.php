@@ -1035,7 +1035,7 @@
       
       message += `%0A🆔 *Réf:* ${devisData.id}`;
 
-      window.open(`https://wa.me/221775449795?text=${message}`, '_blank');
+      window.open(`https://wa.me/221775654122?text=${message}`, '_blank');
 
       // Fermer le modal et réinitialiser
       closeDevisModal();
