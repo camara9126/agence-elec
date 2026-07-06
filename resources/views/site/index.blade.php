@@ -534,7 +534,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link active" href="/">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('boutique') }}">Boutique</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="{{ route('boutique') }}">Boutique</a></li> -->
           <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('apropos') }}">À propos</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
@@ -883,10 +883,7 @@
       </div>
       <hr class="border-light opacity-25 my-2">
       <p class="small opacity-75 text-center mb-0">© 2026 BCM-GROUPE</p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS -->
+    </div>9.
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   
 </body>
