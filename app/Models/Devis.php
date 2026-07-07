@@ -14,7 +14,8 @@ class Devis extends Model
         'date_expiration',
         'note',
         'statut',
-        'objet'
+        'objet',
+        'converti_en_vente',
     ];
 
     public function client()

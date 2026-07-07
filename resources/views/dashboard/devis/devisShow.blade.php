@@ -348,9 +348,9 @@
                     <div class="mt-4 d-flex gap-2">
 
                         @if($devis->statut == 'en_attente')
-                            <a href="{{ route('devis.valider', $devis->id) }}" class="btn btn-success">
+                            <!--<a href="{{ route('devis.valider', $devis->id) }}" class="btn btn-success">
                                     Valider le devis
-                            </a>   
+                            </a>-->  
 
                             <form action="{{route('devis.destroy', $devis->id)}}" type="button" method="post" onsubmit="return confirm('Supprimer ?')">
                                 @csrf
@@ -365,6 +365,12 @@
                             <a href="{{ route('devis.facture', $devis->id) }}" class="btn btn-warning">
                                 Generer la facture
                             </a>
+                        @endif
+
+                        @if(!$devis->converti_en_vente)
+                          <a href="{{ route('devis.convertir', $devis->id) }}" class="btn btn-info">
+                                Convertir en Bon de Commande
+                          </a>
                         @endif
                         
             </div>

@@ -80,6 +80,8 @@ Route::resource('/contrat', ContratController::class)->middleware(['auth', 'veri
 Route::resource('/devis', DevisController::class)->middleware(['auth', 'verified']);
 Route::get('/devis/{id}/facture', [DevisController::class, 'facture'])->middleware(['auth', 'verified'])->name('devis.facture');
 Route::get('/devis/{id}/valider', [DevisController::class, 'valider'])->middleware(['auth', 'verified'])->name('devis.valider');
+Route::get('devis/{devis}/convertir', [DevisController::class, 'convertir'])->middleware(['auth', 'verified'])->name('devis.convertir');
+
 Route::resource('/entreprise', EntrepriseController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

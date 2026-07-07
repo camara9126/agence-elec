@@ -6,9 +6,14 @@ use App\Models\Client;
 use App\Models\Devis;
 use App\Models\DevisDetails;
 use App\Models\Entreprise;
+use App\Models\Paiement;
+use App\Models\Recette;
 use App\Models\Service;
+use App\Models\Vente;
+use App\Models\VenteItem;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 
@@ -46,7 +51,7 @@ class DevisController extends Controller
 
         // Création du devis
         $devis = Devis::create([
-            'reference' => 'DEV-' . strtoupper(Str::random(6)),
+            'reference' => 'DEV-' . now(), //strtoupper(Str::random(6)),
             'client_id' => $request->client_id ?? 2,
             'total' => 0,
             'statut' => 'en_attente',
@@ -172,6 +177,123 @@ class DevisController extends Controller
         $devis->update(['statut' => 'valide']);
 
         return redirect()->back()->with('success', 'Devis validé avec succès');
+    }
+
+
+    /**
+     * Convertir devis en vente
+     */
+    public function convertir(Request $request, string $id)
+    {
+        DB::beginTransaction();
+    
+        try {
+            $devis = Devis::with('client', 'details')->findOrFail($id);
+        
+            // Vérifier si le devis est déjà converti
+                if ($devis->converti_en_vente) {
+                    return redirect()->back()->with('danger', 'Ce devis a déjà été converti en vente.');
+                } 
+
+            // Créer la vente
+            $vente = Vente::create([
+                'reference' => 'VNT-' . time(),
+                'date' => now(),
+                'client_id' => $devis->client_id,
+                'total' => $devis->total,
+                'total_tva' => 0,
+                'total_ttc' => 0,
+                'statut' => 'impayee',
+                'user_id' => $request->user()->id,
+            ]);
+
+                $total = 0;
+                $total_tva = 0;
+                $total_ttc = 0;
+
+            // Ajouter les produits
+            foreach ($devis->details as $detail) {
+
+                $entreprise= Entreprise::findOrFail(1); // Recuperation de la TVA de l'entreprise
+
+                VenteItem::create([
+                    'vente_id' => $vente->id,
+                    'service' => $detail->designation,
+                    'quantite' => $detail->quantite,
+                    'prix_unitaire' => $detail->prix_unitaire,
+                    'taux_tva' => $entreprise->taux_tva,
+                    'montant_tva' => ($detail['quantite'] * $detail['prix_unitaire']) * ($entreprise->taux_tva /100 ),
+                    'total_ttc' => ($detail['quantite'] * $detail['prix_unitaire']) + (($detail['quantite'] * $detail['prix_unitaire']) * ($entreprise->taux_tva /100 )),
+                    'total' => $detail['quantite'] * $detail['prix_unitaire'],
+                ]);
+
+                // Calcule total + total_tva + total_ttc
+                $total += $detail['quantite'] *  $detail['prix_unitaire'];
+                $total_tva += ($detail['quantite'] * $detail['prix_unitaire']) * ($entreprise->taux_tva /100 );
+                $total_ttc += $detail['quantite'] *  $detail['prix_unitaire'] + ($detail['quantite'] * $detail['prix_unitaire']) * ($entreprise->taux_tva /100 );
+
+                // Mise a jour total + total_tva + total_ttc
+                $vente->update([
+                    'total' => $total,
+                    'total_tva' => $total_tva,
+                    'total_ttc' => $total_ttc,
+                ]);
+                
+            }
+
+            // Mise a jour Devis
+            $devis->update([
+                'statut' => 'valide',
+                'converti_en_vente' => 1
+            ]);
+
+            // creation paiement
+                $paiement = $vente;
+
+                $totalPaye = $paiement->paiements()->where('statut','valide')->sum('montant');
+
+                $paiements= Paiement::create([
+                    'vente_id' => $vente->id,
+                    'user_id' => request()->user()->id,
+                    'montant' => $vente->total_ttc,
+                    'mode_paiement' => 'cash',
+                    'date_paiement' => now(),
+                    'statut' => 'valide',
+                    'reference' => 'PAY-' . time()
+                ]);
+
+
+                // Mise à jour du statut de la vente
+                $vente = $paiements->vente;
+
+                $totalPaye = $vente->paiements()->where('statut','valide')->sum('montant');
+
+                $vente->statut = $totalPaye == 0 ? 'impayee' : ($totalPaye < $vente->total_ttc ? 'partielle' : 'payee');
+
+                $vente->save();
+
+
+                // 2. Création automatique de la recette
+                if($vente->statut == 'payee') {
+                    Recette::create([
+                        'user_id' => $request->user()->id,
+                        'paiement_id' => $paiements->id,
+                        'reference' => 'REC-' . now()->timestamp,
+                        'libelle' => 'Paiement vente ' . $vente->reference,
+                        'montant' => $vente->total_ttc,
+                        'date_recette' => now(),
+                        'mode_paiement' => 'cash',
+                        'statut' => 'recu',
+                    ]);
+                }
+
+                DB::commit();
+                return redirect()->route('dashboard', $vente->id)->with('success', 'Devis converti en Bon de Commande');
+
+            } catch (\Exception $e) {
+                DB::rollBack();
+                return redirect()->back()->with('danger', 'Erreur lors de la conversion: ' . $e->getMessage());
+            }
     }
 
     /**

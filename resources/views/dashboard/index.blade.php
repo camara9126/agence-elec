@@ -560,7 +560,7 @@
                 <i class="fas fa-newspaper"></i> Contrats & éditorial
             </button>
             <button class="tab-btn" data-tab="tab10">
-                <i class="fas fa-file-invoice"></i> Facture
+                <i class="fas fa-file-invoice"></i> Factures
             </button>
              <button class="tab-btn" data-tab="tab3">
                 <i class="fas fa-users"></i> Clients
@@ -1396,14 +1396,14 @@
                         <tr>
                             <th>Reference</th>
                             <!--<th>Client</th>-->
-                            <!--<th>Montant TVA</th>-->
-                            <th>Montant Total</th>
+                            <th>Montant TVA</th>
+                            <th>Total HT</th>
                             <!-- <th>Montant Payer</th> -->
                             <!-- <th>Montant Restant</th> -->
                             <th>Date</th>
                             <th>Statut</th>
                             <!--<th>Actions</th>-->
-                            <th>Ticket de caisse</th>
+                            <th>PDF</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -1412,8 +1412,8 @@
                             <tr>
                                 <td>{{$f->reference}}</td>
                                 <!--<td>{{$f->client->nom ?? 'Client supprimee'}}</td>-->
-                                <!--<td>{{number_format($f->total_tva, 0, ',',' ')}} XOF</td>-->
-                                <td>{{number_format($f->total_ttc, 0, ',',' ')}} XOF</td>
+                                <td>{{number_format($f->total_tva, 0, ',',' ')}} XOF</td>
+                                <td>{{number_format($f->total, 0, ',',' ')}} XOF</td>
                                 <!-- <td>{{number_format($f->montant_paye, 0, ',', ' ')}} XOF</td> -->
                                 <!-- <td>{{number_format($f->montant_restant, 0, ',',' ')}} XOF</td> -->
                                 <td>{{$f->created_at->format('d/m/y')}}</td>
