@@ -12,7 +12,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
    <!-- Icon Logo -->
-  <link rel="shortcut icon" href="images/Regilec.png"/>
+  <link rel="shortcut icon" href="images/Logo.jpg"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -593,7 +593,7 @@
     <div class="container">
       <a class="navbar-brand" href="/">
         <div class="logo-regilec">
-          <img src="images/Regilec.png" 
+          <img src="images/Logo.jpg" 
                alt="regilec Logo" 
                class="logo-image">
           <div class="logo-text">
@@ -752,7 +752,7 @@
       <div class="row">
         <div class="col-lg-4 mb-3">
           <div class="logo-regilec mb-2">
-            <img src="images/Regilec.png" 
+            <img src="images/Logo.jpg" 
                  alt="regilec Logo" 
                  style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--or-eclatant);">
             <span style="color: var(--or-eclatant); font-weight: 600; margin-left: 8px;">REGILEC</span>

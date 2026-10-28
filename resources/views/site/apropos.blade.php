@@ -12,7 +12,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
    <!-- Icon Logo -->
-  <link rel="shortcut icon" href="images/Regilec.png"/>
+  <link rel="shortcut icon" href="images/Logo.jpg"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -496,7 +496,7 @@
       <a class="navbar-brand" href="/">
         <div class="logo-regilec">
           <!-- Logo image réelle -->
-          <img src="images/Regilec.png" 
+          <img src="images/Logo.jpg" 
                alt="regilec Logo" 
                class="logo-image"
                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop&w=200&h=200&fit=crop';">
@@ -785,7 +785,7 @@
         <div class="col-lg-4 mb-3">
           <div class="logo-regilec mb-2">
             <!-- Petit logo dans footer -->
-            <img src="images/Regilec.png" 
+            <img src="images/Logo.jpg" 
                  alt="regilec Logo" 
                  style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--or-eclatant);"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop&w=200&h=200&fit=crop';">

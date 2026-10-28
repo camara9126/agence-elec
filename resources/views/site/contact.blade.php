@@ -12,7 +12,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
    <!-- Icon Logo -->
-  <link rel="shortcut icon" href="images/Regilec.png"/>
+  <link rel="shortcut icon" href="images/Logo.jpg"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -378,7 +378,7 @@
       <a class="navbar-brand" href="/">
         <div class="logo-regilec">
           <!-- Logo image (utilisez votre propre URL d'image) -->
-            <img src="images/Regilec.png" alt="regilec Logo" class="logo-image">
+            <img src="images/Logo.jpg" alt="regilec Logo" class="logo-image">
             <div class="logo-text">
             REGILEC
             <span class="le-grand-jour">Votre Partenaire de Qualité</span>
@@ -583,7 +583,7 @@
       <div class="row">
         <div class="col-lg-4 mb-2">
           <div class="logo-regilec mb-2">
-            <img src="images/Regilec.png" alt="regilec Logo" class="logo-image">
+            <img src="images/Logo.jpg" alt="regilec Logo" class="logo-image">
             <span style="color: var(--or-eclatant); font-weight: 600; font-size: 1rem;">REGILEC</span>
           </div>
           <p class="small opacity-75">Votre partenaire événementiel à Saint-Louis depuis 10 ans.</p>
